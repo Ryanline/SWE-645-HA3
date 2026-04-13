@@ -3,6 +3,7 @@ backend/__pycache__/
 backend/*.db
 frontend/node_modules/
 frontend/dist/
+video/
 *.pyc
 *.pyo
 *.pyd
