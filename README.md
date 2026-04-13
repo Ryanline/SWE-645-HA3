@@ -95,8 +95,42 @@ docker run -p 8080:80 swe645-ha3-frontend
 
 Then open `http://localhost:8080`.
 
+## Runtime Frontend Configuration
+
+- The frontend now reads its API base URL from `frontend/public/config.js`.
+- Local development defaults to `http://127.0.0.1:8000`.
+- In Kubernetes, Helm replaces that file with a ConfigMap so the frontend can target the deployed backend without rebuilding the React app.
+
+## Helm / Kubernetes
+
+The repository includes a Helm chart in `chart/`.
+
+Important values in `chart/values.yaml`:
+
+- `frontend.image.repository`
+- `frontend.image.tag`
+- `frontend.apiBaseUrl`
+- `frontend.service.nodePort`
+- `backend.image.repository`
+- `backend.image.tag`
+- `backend.service.nodePort`
+
+Example install:
+
+```powershell
+helm install swe645-ha3 ./chart
+```
+
+This chart creates:
+
+- frontend Deployment
+- frontend Service
+- frontend runtime ConfigMap
+- backend Deployment
+- backend Service
+
 ## Notes
 
-- The frontend currently sends API requests to `http://127.0.0.1:8000`.
+- The default frontend runtime config points to `http://127.0.0.1:8000`.
 - SQLite is used for fast local development and assignment progress.
-- Kubernetes and Helm deployment files can be added next on top of this structure.
+- The Helm chart exposes frontend and backend through NodePort by default for a straightforward classroom-cluster setup.

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: swe645-ha3
+description: Helm chart for the SWE 645 Homework Assignment 3 frontend and backend
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

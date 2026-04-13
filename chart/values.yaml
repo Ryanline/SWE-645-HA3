@@ -1,0 +1,22 @@
+frontend:
+  replicaCount: 1
+  image:
+    repository: swe645-ha3-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 80
+    nodePort: 30081
+  apiBaseUrl: "http://YOUR-NODE-IP:30080"
+
+backend:
+  replicaCount: 1
+  image:
+    repository: swe645-ha3-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 8000
+    nodePort: 30080
