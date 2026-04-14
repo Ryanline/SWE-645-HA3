@@ -1,3 +1,4 @@
+# Ryan Brooks: This Deployment runs the React frontend container and mounts the runtime config file into Nginx.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

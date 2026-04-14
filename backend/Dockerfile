@@ -1,3 +1,4 @@
+# Ryan Brooks: This Dockerfile builds the FastAPI backend image and starts the API server on port 8000.
 FROM python:3.12-slim
 
 WORKDIR /app

@@ -1,3 +1,5 @@
+# Ryan Brooks: This file defines the FastAPI backend, survey data models, and CRUD routes for the Student Survey application.
+# Ryan Brooks: It also configures SQLite persistence and CORS for local and deployed frontend access.
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import date

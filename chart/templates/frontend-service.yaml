@@ -1,3 +1,4 @@
+# Ryan Brooks: This Service exposes the frontend Deployment through a NodePort for browser access.
 apiVersion: v1
 kind: Service
 metadata:

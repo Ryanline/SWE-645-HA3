@@ -1,3 +1,4 @@
+# Ryan Brooks: This ConfigMap provides the runtime frontend config so the deployed React app can call the correct backend URL.
 apiVersion: v1
 kind: ConfigMap
 metadata:

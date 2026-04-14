@@ -1,3 +1,4 @@
+# Ryan Brooks: This Dockerfile builds the React frontend and serves the production files through Nginx.
 FROM node:22-alpine AS build
 
 WORKDIR /app

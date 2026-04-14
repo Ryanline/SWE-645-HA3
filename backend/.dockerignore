@@ -1,3 +1,4 @@
+# Ryan Brooks: This file excludes local backend artifacts and virtual environment files from the Docker build context.
 .venv
 __pycache__
 *.db

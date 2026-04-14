@@ -1,3 +1,5 @@
+// Ryan Brooks: This file contains the React frontend for creating, viewing, editing, and deleting student surveys.
+// Ryan Brooks: It also reads the runtime API configuration used for local and deployed environments.
 import { useEffect, useState } from 'react'
 import './App.css'
 

@@ -1,3 +1,4 @@
+# Ryan Brooks: This file stores the default Helm values for image names, ports, and frontend runtime API configuration.
 frontend:
   replicaCount: 1
   image:

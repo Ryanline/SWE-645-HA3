@@ -1,3 +1,4 @@
+# Ryan Brooks: This file defines the Helm chart metadata for deploying the frontend and backend services.
 apiVersion: v2
 name: swe645-ha3
 description: Helm chart for the SWE 645 Homework Assignment 3 frontend and backend

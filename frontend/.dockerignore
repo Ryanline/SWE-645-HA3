@@ -1,3 +1,4 @@
+# Ryan Brooks: This file excludes local frontend build artifacts and dependencies from the Docker build context.
 node_modules
 dist
 npm-debug.log

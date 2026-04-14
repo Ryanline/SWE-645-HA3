@@ -1,3 +1,4 @@
+# Ryan Brooks: This Service exposes the backend API through a NodePort so the frontend and Swagger docs can reach it.
 apiVersion: v1
 kind: Service
 metadata:
