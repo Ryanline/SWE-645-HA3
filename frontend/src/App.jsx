@@ -36,9 +36,18 @@ function App() {
   }, [])
 
   const fetchSurveys = async () => {
-    const response = await fetch(`${API_BASE_URL}/surveys`)
-    const data = await response.json()
-    setSurveys(data)
+    try {
+      const response = await fetch(`${API_BASE_URL}/surveys`)
+      if (!response.ok) {
+        setStatusMessage('Unable to load surveys right now.')
+        return
+      }
+
+      const data = await response.json()
+      setSurveys(data)
+    } catch {
+      setStatusMessage('Unable to load surveys right now.')
+    }
   }
 
   const resetForm = () => {
@@ -127,38 +136,41 @@ function App() {
       comments: formData.comments || null,
     }
 
-    const isUpdating = selectedSurveyId !== null
-    const response = await fetch(
-      isUpdating
-        ? `${API_BASE_URL}/surveys/${selectedSurveyId}`
-        : `${API_BASE_URL}/surveys`,
-      {
-        method: isUpdating ? 'PUT' : 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    try {
+      const isUpdating = selectedSurveyId !== null
+      const response = await fetch(
+        isUpdating
+          ? `${API_BASE_URL}/surveys/${selectedSurveyId}`
+          : `${API_BASE_URL}/surveys`,
+        {
+          method: isUpdating ? 'PUT' : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(surveyData),
         },
-        body: JSON.stringify(surveyData),
-      },
-    )
+      )
 
-    if (!response.ok) {
+      if (!response.ok) {
+        setStatusMessage('Something went wrong while saving the survey.')
+        return
+      }
+
+      await response.json()
+      await fetchSurveys()
+
+      if (isUpdating) {
+        setStatusMessage('Survey updated successfully.')
+        setIsEditMode(false)
+      } else {
+        setStatusMessage('Survey submitted successfully.')
+        resetForm()
+      }
+    } catch {
       setStatusMessage('Something went wrong while saving the survey.')
+    } finally {
       setIsSubmitting(false)
-      return
     }
-
-    await response.json()
-    await fetchSurveys()
-
-    if (isUpdating) {
-      setStatusMessage('Survey updated successfully.')
-      setIsEditMode(false)
-    } else {
-      setStatusMessage('Survey submitted successfully.')
-      resetForm()
-    }
-
-    setIsSubmitting(false)
   }
 
   const handleDeleteSurvey = async (surveyId) => {
